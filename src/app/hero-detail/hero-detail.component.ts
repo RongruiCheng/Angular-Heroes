@@ -18,7 +18,8 @@ export class HeroDetailComponent implements OnInit {
     // heroService从远端服务器根据ID获取要显示的英雄
     private heroService: HeroService,
     // location 是一个angular服务,使用这个进行浏览器的导航
-    private location: Location) { }
+    private location: Location
+    ) { }
 
   ngOnInit() {
     this.getHero();
