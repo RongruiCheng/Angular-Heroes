@@ -1,6 +1,7 @@
 /* HeroDetailComponent's private CSS styles */
 .wrap{
   border: 1px solid rgb(66, 195, 235);
+  margin: 10px 10px;
 }
 label {
     display: inline-block;

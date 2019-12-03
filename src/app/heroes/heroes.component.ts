@@ -28,8 +28,28 @@ export class HeroesComponent implements OnInit {
   // onNotify() {
   //   window.alert(this.selectedHero.name);
   // }
+  // 请求所有英雄列表
   getHeroes(): void {
     // 实际上: Observable.subscribe();
     this.heroService.getHeroes().subscribe(heroes => this.heroes = heroes);
+  }
+  // 添加英雄
+  add(name: string): void {
+    console.log(name);
+    name = name.trim(); // 去掉字符串的前后空格
+    if (!name) { return; }
+    // 调用服务的方法
+    this.heroService.addHero({ name } as Hero).subscribe(hero => {
+      // 推入数组,类属性数据改变视图自动改变
+      this.heroes.push(hero);
+    });
+  }
+
+  // 删除英雄
+  delete(hero: Hero): void {
+    // 过滤heros数组,触发视图更新
+    this.heroes = this.heroes.filter(item => item !== hero);
+    // 服务发出ajax,依旧要调用subscribe()
+    this.heroService.deleteHero(hero).subscribe();
   }
 }

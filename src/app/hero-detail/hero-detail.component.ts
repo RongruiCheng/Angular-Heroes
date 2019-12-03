@@ -32,7 +32,12 @@ export class HeroDetailComponent implements OnInit {
     const id = +this.route.snapshot.paramMap.get('id');
     this.heroService.getHero(id).subscribe(hero => this.hero = hero);
   }
+  // 导航到上一个视图
   goBack(): void {
     this.location.back();
+  }
+  // 更改英雄名
+  save(): void {
+    this.heroService.updateHero(this.hero).subscribe(() => this.goBack());
   }
 }
